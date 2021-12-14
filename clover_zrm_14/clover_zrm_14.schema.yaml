@@ -1,8 +1,8 @@
 __build_info:
   rime_version: 1.5.3
   timestamps:
-    clover_flypy_14.custom: 0
-    clover_flypy_14.schema: 1639503401
+    clover_zrm_14.custom: 0
+    clover_zrm_14.schema: 1639503397
     default: 1561218646
     default.custom: 1639502766
     key_bindings: 1561218646
@@ -358,14 +358,14 @@ recognizer:
 schema:
   author: "朱宇浩 <dr.yuhao.zhu@outlook.com>"
   description: |
-    🍀️四叶草小鹤双拼14键，是一款适合在手机上使用的方案。它基于以下目的设计：
+    🍀️四叶草自然码双拼14键，是一款适合在手机上使用的方案。它基于以下目的设计：
       - 使用🍀️四叶草简体拼音的词库
-      - 使用小鹤双拼方案
+      - 使用自然码双拼方案
       - 使用14键布局
       - 输入编码实时反应为第一候选字词的编码
     
-  name: "🍀️四叶草小鹤双拼14键"
-  schema_id: clover_flypy_14
+  name: "🍀️四叶草自然码双拼14键"
+  schema_id: clover_zrm_14
   version: 0.1
 simplifier:
   opencc_config: s2t.json
@@ -376,30 +376,30 @@ speller:
     - "derive/^([jqxy])u/$1v/"
     - "xform/^([aoe])(ng)?$/$1$1$2/"
     - "xform/iu$/Q/"
-    - "xform/(.)ei$/$1W/"
-    - "xform/uan$/R/"
+    - "xform/[iu]a$/W/"
+    - "xform/[uv]an$/R/"
     - "xform/[uv]e$/T/"
-    - "xform/un$/Y/"
+    - "xform/ing$|uai$/Y/"
     - "xform/^sh/U/"
     - "xform/^ch/I/"
     - "xform/^zh/V/"
     - "xform/uo$/O/"
-    - "xform/ie$/P/"
+    - "xform/[uv]n$/P/"
     - "xform/i?ong$/S/"
-    - "xform/ing$|uai$/K/"
-    - "xform/(.)ai$/$1D/"
+    - "xform/[iu]ang$/D/"
     - "xform/(.)en$/$1F/"
     - "xform/(.)eng$/$1G/"
-    - "xform/[iu]ang$/L/"
     - "xform/(.)ang$/$1H/"
     - "xform/ian$/M/"
     - "xform/(.)an$/$1J/"
-    - "xform/(.)ou$/$1Z/"
-    - "xform/[iu]a$/X/"
-    - "xform/iao$/N/"
-    - "xform/(.)ao$/$1C/"
+    - "xform/iao$/C/"
+    - "xform/(.)ao$/$1K/"
+    - "xform/(.)ai$/$1L/"
+    - "xform/(.)ei$/$1Z/"
+    - "xform/ie$/X/"
     - "xform/ui$/V/"
-    - "xform/in$/B/"
+    - "xform/(.)ou$/$1B/"
+    - "xform/in$/N/"
     - "xlit/QWRTYUIOPSDFGHJKLZXCVBNM/qwrtyuiopsdfghjklzxcvbnm/"
     - "xlit/qwertyuiopasdfghjklzxcvbnm/qqeettuuooaaddggjjlzzccbbm/"
   alphabet: abcdefghijklmnopqrstuvwxyz
@@ -430,6 +430,6 @@ translator:
   max_homographs: 7
   max_homophones: 7
   max_phrase_length: 10
-  prism: clover_flypy_14
+  prism: clover_zrm_14
   spelling_hints: 16
   user_dict: user
