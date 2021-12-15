@@ -7,3 +7,6 @@ RIME settings and schema's created by Yuhao Zhu.
 - iRime
   - 🍀️四叶草小鹤双拼14键 clover_flypy_14 (based on https://github.com/fkxxyz/rime-cloverpinyin)
   - 🍀️四叶草小鹤双拼14键 clover_zrm_14 (based on https://github.com/fkxxyz/rime-cloverpinyin)
+
+脚本列表
+- 
