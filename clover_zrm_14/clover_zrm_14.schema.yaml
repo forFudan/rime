@@ -2,9 +2,9 @@ __build_info:
   rime_version: 1.5.3
   timestamps:
     clover_zrm_14.custom: 0
-    clover_zrm_14.schema: 1639513701
+    clover_zrm_14.schema: 1639689482
     default: 1561218646
-    default.custom: 1639511350
+    default.custom: 1639689475
     key_bindings: 1561218646
     key_bindings.custom: 0
     punctuation: 1561218646
@@ -14,15 +14,15 @@ __build_info:
 custom_phrase:
   db_class: stabledb
   dictionary: ""
-  enable_completion: false
-  enable_sentence: false
+  enable_completion: true
+  enable_sentence: true
   initial_quality: 1
   user_dict: custom_phrase
 engine:
   filters:
+    - "lua_filter@preedit_filter"
     - simplifier
     - uniquifier
-    - "lua_filter@preedit_filter"
   processors:
     - ascii_composer
     - recognizer
@@ -40,6 +40,8 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
+    - table_translator
+    - reverse_lookup_translator
     - script_translator
 grammar:
   language: "zh-hans-t-essay-bgw"
@@ -353,14 +355,15 @@ recognizer:
   import_preset: default
   patterns:
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    reverse_lookup: "^`([a-z]+'?)*$"
     uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
 schema:
   author: "朱宇浩 <dr.yuhao.zhu@outlook.com>"
-  description: "🍀️四叶草自然码双拼14键，是一款适合在手机上使用的方案。它基于以下目的设计： - 使用🍀️四叶草简体拼音的词库 - 使用自然码双拼方案 - 使用14键布局 - 输入编码实时反应为第一候选字词的编码"
+  description: "🍀️四叶草自然码双拼14键，是一款适合在手机上使用的方案。 <https://github.com/forFudan/rime> 它基于以下目的设计： - 使用🍀️四叶草简体拼音的词库 - 使用自然码双拼方案 - 使用14键布局 - 输入编码实时反应为第一候选字词的编码"
   name: "🍀️四叶草自然码双拼14键"
   schema_id: clover_zrm_14
-  version: 0.1
+  version: 20211215
 simplifier:
   opencc_config: s2t.json
   option_name: zh_simp_s2t
@@ -397,6 +400,8 @@ speller:
     - "xlit/QWRTYUIOPSDFGHJKLZXCVBNM/qwrtyuiopsdfghjklzxcvbnm/"
     - "xlit/qwertyuiopasdfghjklzxcvbnm/qqeettuuooaaddggjjlzzccbbm/"
   alphabet: abcdefghijklmnopqrstuvwxyz
+style:
+  theme_name: cosmic14key
 switches:
   - name: ascii_mode
     reset: 0
@@ -409,12 +414,11 @@ switches:
   - name: ascii_punct
     states: ["。，", "．，"]
 translator:
-  contextual_suggestions: false
   db_class: tabledb
   dictionary: clover
   disable_user_dict_for_patterns:
     - "^z.*$"
-  enable_completion: false
+  enable_completion: true
   enable_encoder: true
   enable_sentence: true
   enable_user_dict: true
@@ -423,5 +427,5 @@ translator:
   max_homophones: 7
   max_phrase_length: 10
   prism: clover_zrm_14
-  spelling_hints: 16
+  spelling_hints: 4
   user_dict: user
