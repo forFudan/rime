@@ -27,7 +27,12 @@
 -- (4) 需要在 engine/filters 添加:
 -- - lua_filter@filter_gb2312
 -- - lua_filter@filter_gbk
--- (5) 建议关闭预测以提升性能, CPU 性能强大的朋友可以忽略本条:
+-- (5) 需要添加以下代码防止符号不上屏:
+-- filter_gb2312:
+--   tags: [abc]
+-- filter_gbk:
+--   tags: [abc]
+-- (6) 建议关闭预测以提升性能, CPU 性能强大的朋友可以忽略本条:
 -- translator/enable_completion: false
 ---------------------------
 local str =
