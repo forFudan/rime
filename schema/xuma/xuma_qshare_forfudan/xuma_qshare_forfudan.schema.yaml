@@ -1,0 +1,116 @@
+# Rime schema settings
+# encoding: utf-8
+# 需要"xuma_precand.lua"
+
+__include: xuma_qshare.schema:/
+
+schema:
+  schema_id: xuma_qshare_forfudan
+  name: 徐码·QS·FF
+  version: "2021-12-17"
+  author:
+    - 發明人 徐国银先生
+    - rime schema by Q
+    - schema customization by forFudan
+  description: |
+    徐码简繁通打
+    chinput.com/xuma
+
+switches:
+  - options: [gb2312, gbk, utf8]
+    states: [gb2312, GBK, UTF-8]
+    reset: 1
+  - name: single_char_only
+    states: [词组派, 单字派]
+    reset: 1
+  - name: ascii_punct
+    states: [。，, ．，]
+  - name: ascii_mode
+    reset: 0
+    states: [中文, 西文]
+  # 切换热键由 xuma_52p_precand/lua 下的 cycle_key 和 switch_key 定义
+  - options: [xuma_precand.off, xuma_precand.brief]
+    states: [正常预显, 预显候选]
+    reset: 1
+  - name: full_shape
+    states: [半角, 全角]
+  - name: simplification
+    states: [漢字, 汉字]
+    reset: 0
+  - name: traditionalization
+    reset: 0
+    states: [简体保持, 簡入繁出]
+  # 切换热键由 xuma_spelling/lua 下的 cycle_key 和 switch_key 定义
+  - options:
+      - xuma_spelling.off
+      - xuma_spelling.lv1
+      - xuma_spelling.lv2
+      - xuma_spelling.lv3
+    states: [〇注解, 一重注解, 二重注解, 三重注解]
+    reset: 0
+  - name: xuma_postpone_fullcode # 仅作用于单字。
+    reset: 1
+    states: [＝原始排序, ↓全码后置]
+  - name: preedit_lazy_clock
+
+fixed:
+  enable_completion: false
+  preedit_format: []
+  
+translator:
+  enable_completion: false
+  enable_sentence: false
+  preedit_format: []
+
+menu:
+  page_size: 9
+
+style:
+  horizontal: false
+  inline_preedit: true
+  label_format: "" #"%s."
+  layout:
+    border_width: 2
+    candidate_spacing: 5
+    hilite_padding: 0
+    hilite_spacing: 0
+    margin_x: 4
+    margin_y: 4
+    min_height: 0
+    min_width: 0 # 160
+    round_corner: 4
+    spacing: 10
+
+__patch:
+  engine/processors:
+    - ascii_composer
+    - recognizer
+    - lua_processor@xuma_spelling_processor
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+    - lua_processor@xuma_precand_processor
+  engine/filters:
+    - lua_filter@single_char_only
+    - charset_filter@gb2312
+    - charset_filter@gbk
+    - charset_filter@big5
+    # - charset_filter@utf8  # 该组件在 librime 1.6.* 以后错误过滤字符，暂时停用
+    - simplifier@simplify
+    - simplifier@traditionalize
+    - reverse_lookup_filter@luna_pinyin_reverse_lookup
+    - reverse_lookup_filter@stroke_reverse_lookup
+    - lua_filter@xuma_spelling@xmsp
+    - lua_filter@xuma_spelling@xmsp_for_rvlk
+    - lua_filter@xuma_postpone_fullcode
+    - lua_filter@xuma_precand
+    - lua_filter@preedit_lazy_clock
+    - uniquifier
+
+xuma_precand:
+  tags: [ abc, long ]
+  lua:
+    cycle_key: 'Control+d'

@@ -6,7 +6,7 @@
 ---------------------------------------
 --
 -- 介绍:
--- 字符过滤 charaset_filter 在小狼毫中不在有效，因为 librime-charcode 被单独出来作为插件.
+-- 字符过滤 charaset_filter 在鼠鬚管中不再有效，因为 librime-charcode 被单独出来作为插件.
 -- 所以写了这个 lua 脚本过滤 GB2312 和 GBK 字符.
 -- 为了允许标点符号，我把它们加入了字符集中.
 -- 这个方法比较粗暴，可能会造成性能的下降.
@@ -21,7 +21,7 @@
 -- 需要在 rime.lua 中添加以下代码:
 -- filter_gb2312 = require("filter_gb2312")
 -- filter_gbk = require("lua.filter_gbk")
--- 
+--
 -- 需要在 switches 添加状态:
 -- - options: [filter_gb2312, filter_gbk, filter_disabled]
 --   states: [GB2312, GBK, 不筛选]
